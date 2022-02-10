@@ -7,7 +7,6 @@ class Card:
             "9", "10", "Jack", "Queen", "King"]
 
     def __init__(self, suit=0, rank=0):
-        '''Initializes a new Card object instance.'''
         self.suit = suit
         self.rank = rank
 

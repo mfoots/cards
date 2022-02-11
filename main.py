@@ -1,7 +1,16 @@
+import os
+import time
 from card import Card
 from deck import Deck
+from hand import Hand
 
-def test():
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+def test1():
     card1 = Card(1, 13)
     print(card1)
     
@@ -15,16 +24,44 @@ def test():
     print(f"{card1} less than {card2}? {card1 < card2}") # False
     print(f"{card1} greater than {card2}? {card1 > card2}") # True
     print(f"{card1} equal to {card3}? {card1 == card3}") # True
-    
-    # print("\nRed Deck")
+
+def test2():
     
     red_deck = Deck()
-    # print(red_deck)
+    print(red_deck)
     
-    # print("\nBlue Deck (Shuffled)")
     blue_deck = Deck()
     blue_deck.shuffle()
-    # print(blue_deck)
+    print(blue_deck)
 
+def test3():
+    deck = Deck()
+    deck.shuffle()
+    
+    hand1 = Hand('Joe')
+    hand2 = Hand('Gordon')
+    
+    print('Player hands...\n')
+    time.sleep(1)
+    print(hand1)
+    time.sleep(1)
+    print(hand2)
+    time.sleep(2)
+    clear()
+    
+    print('Dealing cards to each hand...\n')
+    time.sleep(2)
+    deck.deal((hand1, hand2), 10)
+    clear()
+    
+    print('Displaying hands...\n')
+    time.sleep(1)
+    print(hand2)
+    time.sleep(1)
+    print(hand1)
 
-test()
+    # check how many cards are left
+    print(f"{len(deck.cards)} cards remain in the deck.\n") 
+
+clear()
+test3()

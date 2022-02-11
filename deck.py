@@ -36,3 +36,19 @@ class Deck:
 
     def is_empty(self):
         return self.cards == []
+
+    # do this after creating the Hand class
+
+    def deal(self, hands, number_of_cards=999):
+        '''Deals one or more cards to one or more Hand objects'''
+        number_of_hands = len(hands)
+        for i in range(number_of_cards):
+            if self.is_empty():
+                # are all the cards gone?
+                break
+            # take the top card
+            card = self.pop()
+            # whose turn is next (mod makes it wrap around)
+            hand = hands[i % number_of_hands]
+            # add the card to the hand
+            hand.add(card)

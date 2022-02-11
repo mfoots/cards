@@ -1,4 +1,4 @@
-# card_objects
+# Cards
 Class definitions for card games
 
 ## Card Ranks

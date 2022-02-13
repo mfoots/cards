@@ -3,6 +3,7 @@ import time
 from card import Card
 from deck import Deck
 from hand import Hand
+from war import WarGame
 
 def clear():
     if os.name == 'nt':
@@ -41,7 +42,7 @@ def test3():
     hand1 = Hand('Joe')
     hand2 = Hand('Gordon')
     
-    print('Player hands...\n')
+    print('Creating player hands...\n')
     time.sleep(1)
     print(hand1)
     time.sleep(1)
@@ -63,5 +64,9 @@ def test3():
     # check how many cards are left
     print(f"{len(deck.cards)} cards remain in the deck.\n") 
 
+def start():
+    game = WarGame()
+    game.play()
+
 clear()
-test3()
+start()

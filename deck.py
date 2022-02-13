@@ -52,3 +52,11 @@ class Deck:
             hand = hands[i % number_of_hands]
             # add the card to the hand
             hand.add(card)
+
+if __name__ == "__main__":
+    red_deck = Deck()
+    print(red_deck)
+    
+    blue_deck = Deck()
+    blue_deck.shuffle()
+    print(blue_deck)

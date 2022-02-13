@@ -14,6 +14,7 @@ class WarGame(CardGame):
         self.deck.deal((self.computer, self.player), 52)
 
     def intro(self):
+        self.clear()
         for i in range(1, 5):
             print("Welcome to the War Card Game!")
             progress = '.' * i
@@ -24,10 +25,10 @@ class WarGame(CardGame):
     def status(self):
         print(f"Computer: {self.computer_score} \tPlayer: {self.player_score}")
         
-    def play(self):
+    def play(self, rounds=26):
         self.intro()
         
-        while self.player.cards != []:
+        while self.round <= rounds and self.player.cards != []:
             print(f"Round: {self.round}")
             computer_card = self.computer.pop()
             player_card = self.player.pop()
@@ -50,3 +51,7 @@ class WarGame(CardGame):
             
         print("Final Scores:")
         self.status()
+
+if __name__ == "__main__":
+    game = WarGame()
+    game.play(5)

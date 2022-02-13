@@ -38,3 +38,18 @@ class Card:
         return self.compare(other) < 0
     def __gt__(self, other):
         return self.compare(other) > 0
+
+if __name__ == "__main__":
+    card1 = Card(1, 13)
+    print(card1)
+    
+    card2 = Card(1, 1)
+    print(card2)
+    
+    print(Card.suits[1]) # access a class attribute directly
+    
+    card3 = Card(1, 11)
+    
+    print(f"{card1} less than {card2}? {card1 < card2}") # False
+    print(f"{card1} greater than {card2}? {card1 > card2}") # True
+    print(f"{card1} equal to {card3}? {card1 == card3}") # True

@@ -1,14 +1,10 @@
-from game import CardGame
-from hand import Hand
+from game import *
 
 class WarGame(CardGame):
     def __init__(self):
         CardGame.__init__(self)
-        self.computer = Hand('Computer')
-        self.player = Hand('Player')
-
-        self.computer_score = 0
-        self.player_score = 0
+        self.computer = CardPlayer("Computer")
+        self.player = CardPlayer("Human")
         self.round = 1
 
         self.deck.deal((self.computer, self.player), 52)
@@ -23,7 +19,7 @@ class WarGame(CardGame):
             self.clear()
 
     def status(self):
-        print(f"Computer: {self.computer_score} \tPlayer: {self.player_score}")
+        print(f"{self.computer} \t{self.player}")
         
     def play(self, rounds=26):
         self.intro()
@@ -32,13 +28,13 @@ class WarGame(CardGame):
             print(f"Round: {self.round}")
             computer_card = self.computer.pop()
             player_card = self.player.pop()
-            print(f"Computer: {computer_card}\nPlayer: {player_card}")
+            print(f"{self.computer.name}: {computer_card}\n{self.player.name}: {player_card}")
             if computer_card > player_card:
-                print("Computer wins!")
-                self.computer_score += 1
+                print(f"{self.computer.name} wins!")
+                self.computer.score += 1
             elif player_card > computer_card:
-                print("Player wins!")
-                self.player_score += 1
+                print(f"{self.player.name} wins!")
+                self.player.score += 1
             else:
                 print("It's a draw!")
 
@@ -51,7 +47,18 @@ class WarGame(CardGame):
             
         print("Final Scores:")
         self.status()
+        self.pause()
+        print("\nGame over.\n")
 
 if __name__ == "__main__":
     game = WarGame()
-    game.play(5)
+    again = True
+    while again == True:
+        game.clear()
+        rounds = game.ask_for_number("How many rounds would you like to play? ", 1, 26)
+        game.play(rounds)
+        game.clear()
+        again = 'y' == game.ask_yes_no("Do you want to play again (Yes or No)? ")
+    
+    game.clear()
+    print("Thank's for playing!\n")

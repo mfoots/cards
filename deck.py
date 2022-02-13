@@ -18,10 +18,6 @@ class Deck:
     def shuffle(self):
         import random
         rng = random.Random() # Creates a random number generator
-        # number_of_cards = len(self.cards) # Don't assume there are 52
-        # for i in range(number_of_cards):
-        #     j = rng.randrange(i, number_of_cards)
-        #     (self.cards[i], self.cards[j]) = (self.cards[j], self.cards[i])
         rng.shuffle(self.cards)
 
     def remove(self, card):

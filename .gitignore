@@ -1,2 +1,6 @@
 __pycache__/
 launch.json
+main.py
+.replit
+.config/
+venv/

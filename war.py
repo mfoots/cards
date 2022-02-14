@@ -50,7 +50,7 @@ class WarGame(CardGame):
         self.pause()
         print("\nGame over.\n")
 
-if __name__ == "__main__":
+def start():
     game = WarGame()
     again = True
     while again == True:
@@ -62,3 +62,6 @@ if __name__ == "__main__":
     
     game.clear()
     print("Thank's for playing!\n")
+
+if __name__ == "__main__":
+    start()

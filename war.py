@@ -5,24 +5,30 @@ class WarGame(CardGame):
         CardGame.__init__(self)
         self.computer = CardPlayer("Computer")
         self.player = CardPlayer("Human")
+        self.computer.score = 0
+        self.player.score = 0
         self.round = 1
-
         self.deck.deal((self.computer, self.player), 52)
+
+    def reset(self):
+        self.clear()
+        self.__init__()
 
     def intro(self):
         self.clear()
-        for i in range(1, 5):
-            print("Welcome to the War Card Game!")
-            progress = '.' * i
-            print(f"Loading game{progress}")
-            self.pause()
-            self.clear()
+        print("Welcome to the War Card Game!")
+        self.pause()
+        self.clear()
+
 
     def status(self):
         print(f"{self.computer} \t{self.player}")
+        print(f"Cards left in deck: {len(self.deck.cards)}")
+        print(f"Computer cards: {len(self.computer.cards)}")
+        print(f"Player cards: {len(self.player.cards)}")
         
     def play(self, rounds=26):
-        self.intro()
+        self.clear()
         
         while self.round <= rounds and self.player.cards != []:
             print(f"Round: {self.round}")
@@ -38,20 +44,22 @@ class WarGame(CardGame):
             else:
                 print("It's a draw!")
 
-            print("\nCurrent Scores:")
+            print("\nCurrent Status:")
             self.status()
             
-            self.pause()
+            self.pause(3)
             self.clear()
             self.round += 1
             
-        print("Final Scores:")
+        print("Final Status:")
         self.status()
-        self.pause()
+        self.pause(3)
         print("\nGame over.\n")
+        self.reset()
 
 def start():
     game = WarGame()
+    game.intro()
     again = True
     while again == True:
         game.clear()

@@ -3,4 +3,4 @@ launch.json
 main.py
 .replit
 .config/
-venv/
+.venv/

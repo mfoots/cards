@@ -59,22 +59,16 @@ class BlackJackHand(CardPlayer):
 
     @property
     def total(self):
-        '''Returns the total of the cards in the hand.'''
-
-        # if a card in the hand has a value of None then the total is None
         for card in self.cards:
             if not card.value:
                 return None
 
-        # add up card values
         total = 0
         hand_has_an_ace = False
         for card in self.cards:
             total += card.value
-            # is card an Ace?
             if card.value == BlackJackCard.ACE_VALUE:
                 hand_has_an_ace = True
-
 
         if hand_has_an_ace and total <= 11:
             total += 10

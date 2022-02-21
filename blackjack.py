@@ -48,10 +48,8 @@ class BlackJackDeck(Deck):
         self.shuffle()
 
 class BlackJackHand(CardPlayer):
-    '''A hand of cards for a BlackJack game.'''
 
     def __str__(self):
-        '''Displays a BlackJack Hand.'''
         return f"{self.name}:\n{Deck.__str__(self)}Total: {self.total}\n"
 
     def reset(self):
